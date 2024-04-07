@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="common.js"></script>
+    <script src="services.js"></script>
+    <title>AutoMob-Booking Success</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container">
+            <H1>Booking Confirm!</H1>
+            <p>Thank you for choosing our car service! Your request has been successfully submitted. Our team will review your details and get<br>
+                in touch with you shortly to confirm the appointment. In the meantime, if you have any urgent inquiries or need immediate<br>
+                assistance, feel free to contact us directly at <b>+91 9876556789 </b>or <b>automodmechainic@xyz.com</b>  . We appreciate your trust in our services and<br>
+                look forward to serving you soon. <br><br>
+                
+                Best regards, <br>
+                <b>AutoMob-Mechainic<b></p>
+        </div>
+        <div class="buttons">
+            <button onclick="back()">View All Services</button>
+            <button onclick="goToHome()">Go to Home</button>
+        </div>
+    </section>
+    
+</body>
+<style>
+    
+    section{
+        justify-content: center;
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        height: 80vh;
+    }
+    h1{
+        text-decoration: underline;
+    }
+    .container{
+        border: 5px solid #113f67;
+        height: 200px;
+        width: auto;
+        border-radius: 20px;
+        align-content: center;
+        justify-content: center;
+        background-color:lightblue;
+        color: #113f67;
+        margin: 20px 20px 0px 20px;
+        padding: 20px;
+    }
+    .buttons{
+        display: flex;
+        justify-content: center;
+    }
+    button{
+        height: 30px;
+        width: 250px;
+        border-radius: 5px;
+        color:#113f67;
+        font-size: 15px;
+        background-color: lightblue;
+        border: 2px solid lightblue;
+        cursor: pointer;
+        margin: 0px 10px;
+    }
+    button:hover{
+        color: white;
+        background-color: #113f67;
+        border: 2px solid white;
+        transition: 1s;
+    }
+
+</style>
+<script>
+
+    setTimeout(function rate() {
+        var rating = prompt("please rate our service (1-5):");
+        if(rating>=1 && rating<=5){
+            alert("Thank you for your rating! We appreciate your feedback. ");  
+        }
+        else{
+            alert("Invalid Rating! Please provide a rating between 1 and 5.");
+            rate();
+        }
+    },6000);
+
+    var loggedIn = sessionStorage.getItem('loggedIn');
+if (loggedIn === "true") {
+    // User is logged in
+    var userRole = sessionStorage.getItem('userRole');
+    var username = sessionStorage.getItem('username');
+    // Display username and logout option
+    document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+    document.getElementById('user-menu').style.display = 'block';
+}
+function userDetails(){
+    alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+}
+</script>
+</html>

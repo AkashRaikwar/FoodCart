@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="common.js"></script>
+    <title>Services</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+    <h1>Services Offered</h1>
+    <div id="countdown">
+        Offer expires in: <span id="timer">10:00</span>
+    </div>
+
+    <div id="services">
+        <div id="desc">
+            <h3>1. Preventive Maintenance Service</h3>
+            <p>Keep your car running smoothly and avoid unexpected breakdowns with our preventive maintenance service. We'll inspect and replace fluids, filters, belts, and hoses as needed, as well as perform tire rotations and brake checks to ensure your vehicle's optimal performance and safety.</p>
+            <button onclick="redirectToService('preventive-maintenance-service')">More Details</button>
+        </div>
+        <div id="desc">
+            <h3>2. Body Repair Service</h3>
+            <p>From minor dents to major collision damage, our body repair service will restore your vehicle's appearance and structural integrity. Our skilled technicians use advanced techniques and high-quality materials to repair and replace damaged body panels, bumpers, and glass, giving your car a flawless finish.</p>
+            <button onclick="redirectToService('body-repair-service')">More Details</button>
+        </div>
+        <div id="desc">
+            <h3>3. Car Care Service</h3>
+            <p>Treat your car to a spa day with our car care service. We'll give your vehicle a thorough cleaning inside and out, including vacuuming, shampooing carpets, and detailing the interior, as well as washing, waxing, and polishing the exterior. Your car will look and feel like new, both inside and out.</p>
+            <button onclick="redirectToService('car-care-service')">More Details</button>
+        </div>
+    </div>
+
+    <script>
+        // Countdown timer
+        var countdown = document.getElementById("timer");
+        var timer = 600; // 10 minutes in seconds
+
+        function updateTimer() {
+            var minutes = Math.floor(timer / 60);
+            var seconds = timer % 60;
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            document.getElementById('timer').innerHTML = minutes + ":" + seconds;
+
+            if (timer > 0) {
+                timer--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert("Offer Expired!!");
+                document.getElementById('countdown').innerHTML = 'Offer Expired';
+            }
+        }
+
+        updateTimer();
+
+        // Function to redirect to service page
+        function redirectToService(serviceName) {
+            window.location.href = serviceName + ".html"; 
+        }
+
+
+        var loggedIn = sessionStorage.getItem('loggedIn');
+        if (loggedIn === "true") {
+            // User is logged in
+            var userRole = sessionStorage.getItem('userRole');
+            var username = sessionStorage.getItem('username');
+            // Display username and logout option
+            document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+            document.getElementById('user-menu').style.display = 'block';
+
+        }
+        function userDetails(){
+            alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+        }
+    </script>
+</body>
+<style>
+#services{
+    display: grid;
+}
+#countdown{
+    text-align: center;
+    border-radius: 10px 0px 10px 0px;
+    padding: 10px;
+    margin: 0px 150px;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+}
+#desc{
+    margin: 10px 50px;
+    border: 5px double #113f67;
+    border-radius: 20px 0px 20px 0px;
+    padding: 10px;
+    text-align: center;
+    background-color: lightblue;
+}
+h1,h3{
+    text-align: center;
+    color: #113f67;
+    text-decoration: underline;
+}
+
+button{
+    padding: 10px;
+    width: 150px;
+    border-radius: 5px;
+    color:#113f67;
+    font-size: 15px;
+    background-color: transparent;
+    border: 2px solid #113f67;
+    display: inline-block;
+    margin: 0px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #113f67;
+    border-radius: 10px;
+    color: #e7eaf6;
+    box-shadow: 0px 0px 5px aqua;
+    transition: 2s;
+}
+</style>
+</html>

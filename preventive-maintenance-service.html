@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="services.js"></script>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="common.js"></script>
+    <title>preventive-maintenance-service</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+<section class="content">
+    <h1>Preventive Maintenance Service</h1>
+    <div class="desc">
+        <h3>Description:</h3>
+        Preventive maintenance service is essential for ensuring the long-term health and performance of your vehicle. It involves scheduled inspections, adjustments, and replacements of key components to prevent breakdowns and extend the lifespan of your car.
+         
+        <h3>Jobs Included:</h3>
+        <ul>
+            <li>Engine oil change: Regularly changing the engine oil helps maintain engine lubrication and prevents premature wear and </li>
+            <li>Air filter replacement: The air filter prevents contaminants from entering the engine, and replacing it ensures optimal engine performance.</li>
+            <li>Fluid checks and top-ups: Inspecting and replenishing fluids such as coolant, brake fluid, power steering fluid, and transmission fluid to maintain proper levels and prevent issues.</li>
+            <li>Tire rotation and pressure check: Rotating tires promotes even wear and extends tire life, while maintaining correct tire pressure ensures safe handling and fuel efficiency.</li>
+            <li>Brake inspection: Checking brake pads, rotors, and brake fluid for wear and proper function to ensure reliable braking performance.</li>
+            <li>Battery check: Inspecting the battery for corrosion, leaks, and proper voltage to prevent starting issues.</li>
+            <li>Inspection of belts and hoses: Checking for signs of wear or damage and replacing them as needed to prevent unexpected failures.</li>
+        </ul>
+
+    </div>
+    <div class="buttons">
+        <button onclick="back()">View All Services</button>
+        <button onclick="reroute()">Take Your Appointment</button>
+    </div>
+
+</section>
+    
+<script>
+        var loggedIn = sessionStorage.getItem('loggedIn');
+        if (loggedIn === "true") {
+            // User is logged in
+            var userRole = sessionStorage.getItem('userRole');
+            var username = sessionStorage.getItem('username');
+            // Display username and logout option
+            document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+            document.getElementById('user-menu').style.display = 'block';
+        }
+        function userDetails(){
+            alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+        }
+    </script>
+</body>
+<style>
+    .content{
+        display: grid;
+        color: #113f67;
+        margin: 0px 50px;
+    }
+    h1,h3{
+        text-decoration: underline;
+    }
+    .desc{
+        border: 5px double #113f67;
+        padding: 20px;
+        border-radius: 20px 0px 20px 0px;
+        margin-bottom: 10px;
+        background-color: lightblue;
+    }
+    .buttons{
+        display: flex;
+        justify-content: center;
+    }
+    button{
+        height: 30px;
+        width: 250px;
+        border-radius: 5px;
+        color:#113f67;
+        font-size: 15px;
+        background-color: lightblue;
+        border: 2px solid lightblue;
+        cursor: pointer;
+        margin: 0px 10px;
+    }
+    button:hover{
+        color: white;
+        background-color: #113f67;
+        border: 2px solid white;
+        transition: 1s;
+    }
+</style>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login: AutoMob-Mechainic</title>
+</head>
+<body>
+
+        
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+    <section>
+        <div class="login-container">
+            
+                <form id="loginForm">
+                    <h1>SIGN IN</h1>
+                    <div id="user">
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div id="pass">
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <p id="message"></p>
+                    <button type="submit" id="loginBtn" onsubmit="validateLogin()">Login</button>
+                </form>
+        </div>
+    </section>
+</body>
+<style>
+body{
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(to bottom,rgb(168, 216, 241), rgb(79, 76, 165));
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    background-color: #113f67;
+    color: black;
+    position: sticky;
+    border-radius: 20px;
+    height: 10vh;
+    margin: 5px;
+}
+
+.logo{
+    align-items: center;
+}
+.logo a{
+    color: #a2a8d3;
+    /* text-decoration: line-through; */
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+.logo a:hover{
+    color: #e7eaf6;
+    box-shadow: 0px 0px 5px aqua;
+    transition: 1s;
+}
+.nav-links{
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.nav-links li{
+    margin:5px;
+    list-style: none;
+    float: left;
+}
+.nav-links li a{
+    color: #e7eaf6;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.nav-links li a:hover{
+    color: aqua;
+    box-shadow: 0px 5px 5px aqua;
+    transition: 1s ease;
+}
+    section{
+        
+        align-content: center;
+        justify-content: center;
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        height: 80vh;
+    }
+    .login-container{
+        border: 1px solid black;
+        height: 300px;
+        width: 300px;
+        border-radius: 20px;
+        align-content: center;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+        background-color: #113f67;
+        color: aliceblue;
+        text-shadow: 0px 0px 5px aqua;
+    }
+    .login-container:hover{
+        box-shadow: 0px 0px 10px aqua;
+        transition: 1s;
+        background-color:lightblue;
+        color: #113f67;
+        text-shadow: 0px 0px 2px #113f67;
+    }
+
+    
+    .login-container div input{
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0px 0px 10px rgb(0, 7, 7);
+        transition: 1s;
+    }
+    .login-container div input:hover{
+        box-shadow: 0px 0px 10px aqua;
+        transition: 1s;
+    }
+
+
+    .login-container div{
+        margin: 5px;
+        padding: 10px;
+    }
+    #loginBtn{
+        height: 40px;
+        width: 100px;
+        font-size: 15px;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px black;
+        transition: 1s;
+    }
+    #loginBtn:hover{
+        box-shadow: 0px 0px 10px lightblue;
+        transition: 1s;
+    }
+    
+</style>
+<script>
+    
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        validateLogin();
+    });
+    function validateLogin() {
+        // Fetch JSON array from users.json
+        fetch('users.json')
+        .then(response => response.json())
+        .then(data => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const user = data.find(user => user.username === username && user.password === password);
+
+        if (user) {
+        // Store user role in sessionStorage
+            sessionStorage.setItem('userRole', user.role);
+            sessionStorage.setItem('loggedIn', true);
+            sessionStorage.setItem('username', user.username);
+            alert('Login successful');
+
+        // Redirect to home page with correct filename
+        location.assign('home.html');
+      } else {
+        alert('Invalid username or password');
+      }
+    })
+    .catch(error => console.error('Error:', error));
+}
+</script>
+</html>

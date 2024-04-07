@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="services.js"></script>
+    <script src="common.js"></script>
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>car-care-service</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+    <section class="content">
+        <h1>Car Care Service</h1>
+        <div class="desc">
+            <h3>Description:</h3>
+            Car care service focuses on maintaining the cleanliness, appearance, and comfort of the vehicle both inside and out. It helps preserve the value of the car and enhances the driving experience for the owner and passengers.             
+            <h3>Jobs Included:</h3>
+            <ul>
+                <li>Exterior washing and waxing: Thoroughly washing the exterior of the vehicle to remove dirt, grime, and debris, followed by waxing to protect the paint and provide a glossy finish.</li>
+                <li>Interior cleaning: Vacuuming and wiping down surfaces to remove dust, dirt, and stains from the interior of the vehicle, including seats, carpets, dashboard, and door panels.</li>
+                <li>Leather conditioning: Applying conditioner to leather seats and surfaces to moisturize and protect them from drying out and cracking.</li>  
+                <li>Window cleaning: Cleaning the interior and exterior of windows and mirrors for optimal visibility and aesthetics.</li>
+                <li>Tire dressing: Applying tire dressing to enhance the appearance of tires and protect them from drying out and cracking.</li>
+                <li>Odor removal: Using specialized products and techniques to eliminate unpleasant odors from the vehicle's interior, such as smoke, food, or pet odors.</li>                
+            </ul>
+    
+        </div>
+        <div class="buttons">
+            <button onclick="back()">View All Services</button>
+            <button onclick="reroute()">Take Your Appointment</button>
+        </div>
+    
+    </section>
+</body>
+
+<script>
+    var loggedIn = sessionStorage.getItem('loggedIn');
+if (loggedIn === "true") {
+    // User is logged in
+    var userRole = sessionStorage.getItem('userRole');
+    var username = sessionStorage.getItem('username');
+    // Display username and logout option
+    document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+    document.getElementById('user-menu').style.display = 'block';
+}
+function userDetails(){
+    alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+}
+</script>
+
+<style>
+    .content{
+        display: grid;
+        color: #113f67;
+        margin: 0px 50px;
+    }
+    h1,h3{
+        text-decoration: underline;
+    }
+    .desc{
+        border: 5px double #113f67;
+        padding: 20px;
+        border-radius: 20px 0px 20px 0px;
+        margin-bottom: 10px;
+        background-color: lightblue;
+    }
+    .buttons{
+        display: flex;
+        justify-content: center;
+    }
+    button{
+        height: 30px;
+        width: 250px;
+        border-radius: 5px;
+        color:#113f67;
+        font-size: 15px;
+        background-color: lightblue;
+        border: 2px solid lightblue;
+        cursor: pointer;
+        margin: 0px 10px;
+    }
+    button:hover{
+        color: white;
+        background-color: #113f67;
+        border: 2px solid white;
+        transition: 1s;
+    }
+</style>
+</html>

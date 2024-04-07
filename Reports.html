@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="common.js"></script>
+    <title>Display Submissions</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="Home.html">AutoMob &#9881;</a>
+        </div>
+    </nav>
+    <section>
+        <div class="container">
+            <div><h1>Booking Submissions</h1></div>
+            <table border="1">
+                
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Car Model</th>
+                        <th>Car Number</th>
+                        <th>Chasis Number</th>
+                        <th>Service</th>
+                        <th>Booking Date</th>
+                        <th>Booking Time</th>
+                     </tr>
+                
+                <tbody id="submissionsTableBody">
+                <!-- Submissions will be dynamically added here -->
+                </tbody>
+            </table>
+            <button id="clear-data" onclick="clearData()">Clear Data</button>
+        </div>
+        
+    </section>
+    <script>
+        // Load submissions from local storage
+        var submissions = JSON.parse(localStorage.getItem('submissions')) || [];
+
+        // Function to display submissions in table
+        function displaySubmissions() {
+            var submissionsTableBody = document.getElementById('submissionsTableBody');
+
+            submissions.forEach(function(submission) {
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${submission.username}</td>
+                    <td>${submission.email}</td>
+                    <td>${submission.phone}</td>
+                    <td>${submission.carmodel}</td>
+                    <td>${submission.carno}</td>
+                    <td>${submission.chasis}</td>
+                    <td>${submission.service}</td>
+                    <td>${submission.booking_date}</td>
+                    <td>${submission.booking_time}</td>
+                `;
+                submissionsTableBody.appendChild(row);
+            });
+        }
+
+        // Call the function to display submissions when the page loads
+        displaySubmissions();
+
+        var loggedIn = sessionStorage.getItem('loggedIn');
+        if (loggedIn === "true") {
+            // User is logged in
+            var userRole = sessionStorage.getItem('userRole');
+            var username = sessionStorage.getItem('username');
+            // Display username and logout option
+            document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+            document.getElementById('user-menu').style.display = 'block';
+        }
+        function userDetails(){
+        alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+        }
+        function clearData(){
+            localStorage.clear();
+            window.location.href="Reports.html";
+        }
+    </script>
+</body>
+<style>
+    section{
+    
+        justify-content: center;
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        height: 80vh;
+    }
+    .container{
+        border: 4px double black;
+        height: auto;
+        width: auto;
+        border-radius: 20px;
+        display: block;
+        text-align: center;
+        background-color: lightblue;
+        color: #113f67;
+
+        justify-self: center;
+    }
+    .container:hover{
+        box-shadow: 0px 0px 20px #113f67;
+        transition: 1s;
+    }
+    table{
+        margin: 10px;
+        border-radius: 5px;
+        background-color: aliceblue;
+        color: #113f67;
+    }
+    #clear-data{
+        height: 30px;
+        width: 150px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #113f67;
+    }
+    #clear-data:hover{
+        color:white;
+        background-color: #113f67;
+        border-radius: 4px;
+    }
+</style>
+</html>

@@ -1,0 +1,17 @@
+[
+    {"username":"admin","password": "admin","role":"admin"},
+    {"username": "Akash", "password": "Akash123", "role": "user"},
+    {"username": "Aniket", "password": "Aniket123", "role": "user"},
+    {"username": "Shlok", "password": "Shlok123", "role": "user"},
+    {"username": "Sonu", "password": "Sonu123", "role": "user"},
+    {"username": "Earl", "password": "Earl456", "role": "user"},
+    {"username": "Ming", "password": "Ming789", "role": "user"},
+    {"username": "Webster", "password": "Webster0123", "role": "user"},
+    {"username": "Barons", "password": "Barons456", "role": "user"},
+    {"username": "Kaze", "password": "Kaze789", "role": "user"},
+    {"username": "BigLou", "password": "BigLou0123", "role": "user"},
+    {"username": "Izzy", "password": "Izzy456", "role": "user"},
+    {"username": "Vic", "password": "Vic789", "role": "user"},
+    {"username": "Taz", "password": "Taz0123", "role": "user"},
+    {"username": "Sonny", "password": "Sonny456", "role": "user"}
+]

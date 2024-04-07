@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>AutoMob-Home</title>
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-links">
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li id="service"><a href="">Services</a></li>
+                <li id="reports" style="display: none;"><a href="Reports.html">Reports</a></li>
+                <li id="login-btn"><a href="login.html">Login</a></li>
+                <li id="logout-btn" style="display: none;"><a href="" onclick="logout()">Logout</a></li>
+                <li id="user-menu" style="display: none;"><a href=""></a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="">AutoMob &#9881;</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <div class="border">
+                <h2>The Road to Reliable Maintenance Starts Here</h2>
+                <p>
+                Rev up your car care experience with AutoMob-Mechanic,
+                where convenience meets quality service. From routine
+                maintenance to intricate repairs, we've got your back 
+                so you can hit the road worry-free. Drive with confidence,
+                trust AutoMob-Mechanic to keep your wheels turning
+                smoothly.
+                </p>
+            </div>
+            <button id="explore-us" onclick="redirectToServices()">Explore us</button>
+        </div>
+        
+    </div>
+
+    <script>
+        // Check if the user is logged in
+        var loggedIn = sessionStorage.getItem('loggedIn');
+        if (loggedIn === "true") {
+            // User is logged in
+            var userRole = sessionStorage.getItem('userRole');
+            var username = sessionStorage.getItem('username');
+
+            // Display username and logout option
+            document.getElementById('user-menu').innerHTML = '<a href="" onclick="userDetails()"><i class="fas fa-user"></i> ' + username +'</a>';
+            document.getElementById('user-menu').style.display = 'block';
+            document.getElementById('service').innerHTML='<a href="service.html">Services</a>'
+            document.getElementById('login-btn').style.display = 'none';
+            document.getElementById('logout-btn').style.display = 'block';
+            if(userRole ==="admin"){
+                document.getElementById('reports').style.display = 'block'; 
+            }
+        } else {
+            // User is not logged in
+            document.getElementById('login-btn').style.display = 'block';
+            document.getElementById('service').innerHTML='<a href="login.html">Services</a>'
+        }
+
+        function redirectToServices(){
+            window.location.href="service.html";
+        }
+
+        function logout(){
+            //clears all the session storage
+            sessionStorage.clear();
+            //Redirects to Home page
+            window.location.href="Home.html";
+        }
+
+        function userDetails(){
+            alert("User Name : "+ username +"\nUser Role : "+userRole+"\nStatus : Logged in");
+        }
+    </script>
+</body>
+</html>
